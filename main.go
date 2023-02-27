@@ -17,8 +17,12 @@ func (d *Data) getIsIron() bool {
 	return v&1 == 1
 }
 
-func (d *Data) setIsIron() {
-	d.Value |= 8
+func (d *Data) setIsIron(isIron bool) {
+	if isIron {
+		d.Value |= 8
+	}else{
+		d.Value &= (255 - 8)
+	}
 }
 
 func (d *Data) getIsCode() bool {
@@ -26,8 +30,12 @@ func (d *Data) getIsCode() bool {
 	return v&1 == 1
 }
 
-func (d *Data) setIsCode() {
-	d.Value |= 32
+func (d *Data) setIsCode(isCode bool) {
+	if isCode {
+		d.Value |= 32
+	}else{
+		d.Value &= (255 - 32)
+	}
 }
 
 func (d *Data) getIsFlag() bool {
